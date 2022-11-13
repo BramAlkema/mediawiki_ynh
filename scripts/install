@@ -31,6 +31,7 @@ wiki_name=$YNH_APP_ARG_WIKI_NAME
 app=$YNH_APP_INSTANCE_NAME
 
 secret=$(ynh_string_random --length=64)
+create_account=false
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
@@ -55,6 +56,7 @@ ynh_app_setting_set --app=$app --key=admin --value=$admin
 ynh_app_setting_set --app=$app --key=admin_password --value=$admin_password
 ynh_app_setting_set --app=$app --key=wiki_name --value=$wiki_name
 ynh_app_setting_set --app=$app --key=secret --value=$secret
+ynh_app_setting_set --app=$app --key=create_account --value=$create_account
 
 #=================================================
 # STANDARD MODIFICATIONS

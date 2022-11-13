@@ -29,6 +29,7 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 secret=$(ynh_app_setting_get --app=$app --key=secret)
 fpm_footprint=$(ynh_app_setting_get --app=$app --key=fpm_footprint)
 fpm_usage=$(ynh_app_setting_get --app=$app --key=fpm_usage)
+create_account=$(ynh_app_setting_get --app=$app --key=create_account)
 
 #=================================================
 # CHECK VERSION
@@ -87,6 +88,12 @@ fi
 if [ -z "$fpm_usage" ]; then
 	fpm_usage=low
 	ynh_app_setting_set --app=$app --key=fpm_usage --value=$fpm_usage
+fi
+
+# If create_account doesn't exist, create it
+if [ -z "$create_account" ]; then
+	create_account=false
+	ynh_app_setting_set --app=$app --key=create_account --value=$create_account
 fi
 
 # Removed in dec. 2020
